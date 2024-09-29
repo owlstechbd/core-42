@@ -94,8 +94,6 @@ $(document).ready(function () {
   var owl = $(".owl-carousel").owlCarousel({
     margin: 10,
     mouseDrag: false,
-    autoplay: false,
-    autoplayTimeout: 3000,
     loop: true,  // Enable loop to make carousel infinite
     responsive: {
       0: {
