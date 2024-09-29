@@ -362,6 +362,13 @@ circle {
     transform-origin: 60px 60px;
 }
 
+.progress {
+    display: block; /* Default for all browsers */
+  }
+  .safari .progress {
+    display: none; /* Only Safari */
+  }
+
 .time {
     position: absolute;
     top: 50%;
@@ -2084,9 +2091,3 @@ partner */
     margin-bottom: 50px;
 }
 
-.progress {
-    display: block; /* Default for all browsers */
-  }
-  .safari .progress {
-    display: none; /* Only Safari */
-  }
