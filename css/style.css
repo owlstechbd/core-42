@@ -43,6 +43,28 @@ a:hover {
     text-decoration: none !important;
 }
 
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease; /* Smooth transition */
+}
+
+.slide {
+    min-width: 100%;
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+    opacity: 0;
+}
+
+.active {
+    opacity: 1; /* Show active slide */
+}
+
+
 /* General navbar styles */
 .navbar {
     width: 100%;
@@ -151,7 +173,12 @@ a:hover {
     width: 100%;
     position: relative;
 }
-
+.hero2{
+    background: url(../images/hero-banner2.png) top center;
+    background-size: cover;
+    height: 75vh;
+    width: 100%;
+  }
 .background-video {
     width: 100%;
     position: relative;
