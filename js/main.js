@@ -84,36 +84,7 @@ window.addEventListener("click", function (event) {
   }
 });
 
-//leader slider
 
-$(document).ready(function () {
-  // Initialize Leader Team Carousel
-  var leaderOwl = $(".leader-carousel").owlCarousel({
-    loop: true,
-    margin: 20,
-    autoplay: false,
-    responsive: {
-      0: {
-        items: 2, // Show 2 items on mobile devices
-      },
-      600: {
-        items: 2, // Show 3 items on medium devices
-      },
-      1000: {
-        items: 2, // Show 4 items on larger devices
-      },
-    },
-  });
-
-  // Custom navigation for leader team carousel
-  $(".custom-next-leader").click(function () {
-    leaderOwl.trigger("next.owl.carousel");
-  });
-
-  $(".custom-prev-leader").click(function () {
-    leaderOwl.trigger("prev.owl.carousel", [300]);
-  });
-});
 
 //slider
 
@@ -213,6 +184,27 @@ $(document).ready(function () {
     equalizeHeights();  // Run the equalize heights after everything has loaded
   });
 });
+
+//leader slider
+
+var leaderOwl = $(".leader-carousel").owlCarousel({
+  loop: true,
+  margin: 20,
+  autoplay: false,
+  responsive: {
+    0: {
+      items: 2, // Show 2 items on mobile devices
+    },
+    600: {
+      items: 3, // Show 3 items on medium devices
+    },
+    1000: {
+      items: 4, // Show 4 items on larger devices
+    },
+  },
+});
+
+
 
 
 
