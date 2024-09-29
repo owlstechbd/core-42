@@ -118,7 +118,8 @@ $(document).ready(function () {
 //slider
 
 $(document).ready(function () {
-  // Initialize Owl Carousel
+
+  // Step 1: Initialize Owl Carousel first
   var owl = $(".owl-carousel").owlCarousel({
     margin: 10,
     mouseDrag: false,
@@ -137,10 +138,13 @@ $(document).ready(function () {
       },
     },
     onInitialized: function() {
-      equalizeHeights(); // Ensure equal heights after carousel initializes
+      console.log('Owl Carousel initialized');
+      // Call other functions after Owl Carousel has been initialized
+      initializeOtherElements();  // Step 2: Initialize other components
     },
     onResized: function() {
-      equalizeHeights(); // Ensure equal heights on resize
+      // Ensure heights are recalculated when resized
+      equalizeHeights();
     }
   });
 
@@ -152,56 +156,64 @@ $(document).ready(function () {
     owl.trigger("prev.owl.carousel", [300]);
   });
 
-  // Event delegation for opening popups
-  $(document).on('click', '.popup-trigger', function () {
-    // Get the popup id from the data-popup attribute
-    var popupId = $(this).data('popup');
-    
-    // Show the corresponding popup
-    $('#' + popupId).fadeIn();
-  });
+  // Step 2: Function to load other elements after slider initialization
+  function initializeOtherElements() {
 
-  // Close popup event
-  $(document).on('click', '.close-btn', function () {
-    $(this).closest('.service-popup').fadeOut();
-  });
-
-  // Equalize heights for service-area elements (if needed)
-  function equalizeHeights() {
-    var maxHeight = 0;
-    $(".service-area").css("height", "auto"); // Reset heights to auto
-
-    // Calculate the maximum height
-    $(".service-area").each(function () {
-      var thisHeight = $(this).outerHeight();
-      if (thisHeight > maxHeight) {
-        maxHeight = thisHeight;
-      }
+    // Event delegation for opening popups
+    $(document).on('click', '.popup-trigger', function () {
+      // Get the popup id from the data-popup attribute
+      var popupId = $(this).data('popup');
+      // Show the corresponding popup
+      $('#' + popupId).fadeIn();
     });
 
-    // Set all service-area elements to the maximum height
-    $(".service-area").css("height", maxHeight + "px");
+    // Close popup event
+    $(document).on('click', '.close-btn', function () {
+      $(this).closest('.service-popup').fadeOut();
+    });
+
+    // Equalize heights for service-area elements (if needed)
+    function equalizeHeights() {
+      var maxHeight = 0;
+      $(".service-area").css("height", "auto"); // Reset heights to auto
+
+      // Calculate the maximum height
+      $(".service-area").each(function () {
+        var thisHeight = $(this).outerHeight();
+        if (thisHeight > maxHeight) {
+          maxHeight = thisHeight;
+        }
+      });
+
+      // Set all service-area elements to the maximum height
+      $(".service-area").css("height", maxHeight + "px");
+    }
+
+    // Run equalizeHeights after Owl Carousel is initialized
+    equalizeHeights();
+
+    // Debounce the resize event to improve performance
+    function debounce(func, wait) {
+      var timeout;
+      return function () {
+        clearTimeout(timeout);
+        timeout = setTimeout(func, wait);
+      };
+    }
+
+    // Re-run equalizeHeights on window resize with debounce
+    $(window).resize(debounce(function () {
+      equalizeHeights();
+    }, 250));  // 250ms delay
   }
 
-  // Run equalizeHeights after all images have loaded
+  // Ensure equal heights are calculated after all images have loaded
   $(window).on('load', function() {
-    equalizeHeights();
+    console.log("All images and content loaded.");
+    equalizeHeights();  // Run the equalize heights after everything has loaded
   });
-
-  // Debounce the resize event to improve performance
-  function debounce(func, wait) {
-    var timeout;
-    return function () {
-      clearTimeout(timeout);
-      timeout = setTimeout(func, wait);
-    };
-  }
-
-  // Re-run equalizeHeights on window resize with debounce
-  $(window).resize(debounce(function () {
-    equalizeHeights();
-  }, 250));  // 250ms delay
 });
+
 
 
 
