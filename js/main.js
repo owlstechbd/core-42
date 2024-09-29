@@ -142,7 +142,7 @@ document.querySelector('.slider-container').addEventListener('mouseenter', () =>
 });
 
 document.querySelector('.slider-container').addEventListener('mouseleave', () => {
-    autoSlideInterval = setInterval(autoSlide, 9000);
+    autoSlideInterval = setInterval(autoSlide, 4000);
 });
 
 
