@@ -178,11 +178,7 @@ $(document).ready(function () {
     }, 250));  // 250ms delay
   }
 
-  // Ensure equal heights are calculated after all images have loaded
-  $(window).on('load', function() {
-    console.log("All images and content loaded.");
-    equalizeHeights();  // Run the equalize heights after everything has loaded
-  });
+
 });
 
 //leader slider
