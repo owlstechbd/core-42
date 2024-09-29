@@ -1962,7 +1962,9 @@ partner */
         justify-content: center;
         padding-bottom: 30px;
     }
-
+    .progress{
+        display: none;
+    }
     .menu-btn {
         margin-top: 5px;
         padding: 10px 35px;
