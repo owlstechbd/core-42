@@ -178,6 +178,7 @@ a:hover {
     background-size: cover;
     height: 75vh;
     width: 100%;
+    background-position-Y:106px ;
   }
 .background-video {
     width: 100%;
@@ -1942,6 +1943,10 @@ partner */
 }
 
 @media only screen and (max-width: 768px) {
+    .hero2{
+        background: linear-gradient(180deg, rgba(27,27,25,0.7847514005602241) 9%, rgba(27, 27, 25, 0.733) 50%), url(../images/herophone-banner2.png) top center;
+        background-size: cover;
+    }
     .main {
         max-width: 95%;
     }
