@@ -127,7 +127,7 @@ $(document).ready(function () {
     loop: true,  // Enable loop to make carousel infinite
     responsive: {
       0: {
-        items: 1.1,  // 1.5 items on mobile
+        items: 1.1,  // 1.1 items on mobile
       },
       600: {
         items: 2,  // 2 items on tablet
@@ -136,6 +136,12 @@ $(document).ready(function () {
         items: 3.5,  // 3.5 items on desktop
       },
     },
+    onInitialized: function() {
+      equalizeHeights(); // Ensure equal heights after carousel initializes
+    },
+    onResized: function() {
+      equalizeHeights(); // Ensure equal heights on resize
+    }
   });
 
   // Custom Navigation Events
@@ -163,22 +169,40 @@ $(document).ready(function () {
   // Equalize heights for service-area elements (if needed)
   function equalizeHeights() {
     var maxHeight = 0;
-    $(".service-area").css("height", "auto");
+    $(".service-area").css("height", "auto"); // Reset heights to auto
+
+    // Calculate the maximum height
     $(".service-area").each(function () {
       var thisHeight = $(this).outerHeight();
       if (thisHeight > maxHeight) {
         maxHeight = thisHeight;
       }
     });
+
+    // Set all service-area elements to the maximum height
     $(".service-area").css("height", maxHeight + "px");
   }
 
-  // Run equalizeHeights on page load and window resize
-  equalizeHeights();
-  $(window).resize(function () {
+  // Run equalizeHeights after all images have loaded
+  $(window).on('load', function() {
     equalizeHeights();
   });
+
+  // Debounce the resize event to improve performance
+  function debounce(func, wait) {
+    var timeout;
+    return function () {
+      clearTimeout(timeout);
+      timeout = setTimeout(func, wait);
+    };
+  }
+
+  // Re-run equalizeHeights on window resize with debounce
+  $(window).resize(debounce(function () {
+    equalizeHeights();
+  }, 250));  // 250ms delay
 });
+
 
 
 //faq
