@@ -2098,3 +2098,55 @@ partner */
     margin-bottom: 50px;
 }
 
+.multiselect-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    color: #C5C4C4;
+}
+
+.multiselect-btn {
+    width: 100%;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-bottom: 1px solid #D9D9D9 ;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100%;
+    border-bottom: 1px solid #ddd;
+    z-index: 1;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-item input {
+    margin-right: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.multiselect-btn.active + .dropdown-content {
+    display: block;
+}
+button.multiselect-btn {
+    color: #C5C4C4;
+    font-size: 16px;
+}

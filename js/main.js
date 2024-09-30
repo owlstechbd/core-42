@@ -356,4 +356,50 @@ $('.menu a[href^="#"]').click(function (e) {
 var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 if (isSafari) {
   document.body.classList.add("safari");
+};
+
+
+
+// Toggle the dropdown on button click
+document.querySelector('.multiselect-btn').addEventListener('click', function () {
+  this.classList.toggle('active');
+  var dropdownContent = this.nextElementSibling;
+  dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+});
+
+// Update button text based on selected checkboxes
+function updateButtonText() {
+  var selected = Array.from(document.querySelectorAll('.dropdown-item input:checked'))
+      .map(function (item) {
+          return item.value;
+      });
+
+  var buttonText = selected.length > 0 ? selected.join(', ') : 'None selected';
+  document.querySelector('.multiselect-btn').textContent = buttonText;
 }
+
+// Handle multiple checkbox selection without closing dropdown
+document.querySelectorAll('.dropdown-item input').forEach(function (checkbox) {
+  checkbox.addEventListener('change', function () {
+      updateButtonText();
+  });
+});
+
+// Prevent dropdown from closing when clicking inside it
+document.querySelector('.dropdown-content').addEventListener('click', function(event) {
+  event.stopPropagation();
+});
+
+// Close the dropdown when clicking outside the dropdown area
+window.onclick = function(event) {
+  if (!event.target.matches('.multiselect-btn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.style.display === "block") {
+              openDropdown.style.display = "none";
+              document.querySelector('.multiselect-btn').classList.remove('active');
+          }
+      }
+  }
+};

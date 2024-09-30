@@ -160,8 +160,7 @@
             </div>
             
         </div>
-        <!-- <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="next" onclick="changeSlide(1)">&#10095;</button> -->
+        
     </div>
       
 
@@ -728,16 +727,30 @@
                 <input type="text" id="name" name="name" required placeholder="Full Name">
                 <input type="email" id="email" name="email" required placeholder="Business Email">
                 <input type="text" id="company" name="company" required placeholder="Company Name">
-                <select id="services" name="services" required>
-                    <option value="">Product Interest</option>
-
-                    <option value="Sovereign Public Cloud">Sovereign Public Cloud</option>
-                    <option value="Signature Private Cloud">Signature Private Cloud</option>
-                    <option value="Compass">Compass</option>
-                    <option value="AI Cloud">AI Cloud </option>
-                    <option value="Digital Services">Digital Services</option>
-                    <option value="Others">Others</option>
-                </select>
+                
+                <div class="multiselect-dropdown">
+                    <button class="multiselect-btn">None selected</button>
+                    <div class="dropdown-content">
+                        <label class="dropdown-item">
+                            <input type="checkbox" value="Cheese" /> Cheese
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" value="Tomatoes" /> Tomatoes
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" value="Mozzarella" /> Mozzarella
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" value="Mushrooms" /> Mushrooms
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" value="Pepperoni" /> Pepperoni
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" value="Onions" /> Onions
+                        </label>
+                    </div>
+                </div>
 
                 <label class="trem">
                     <input type="checkbox" id="terms" name="terms" required checked>
